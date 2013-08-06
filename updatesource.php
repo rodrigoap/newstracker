@@ -66,20 +66,24 @@ $dom->preserveWhiteSpace = FALSE; // change to FALSE to see the difference
 $dom->load($sourceUrl);
 foreach ($dom->getElementsByTagName('item') as $item) {
     $title = "";
+    $guid = "NA";
     $link = "";
     foreach($item->childNodes as $node) {
         $nodeName = $node->nodeName;
         if ($nodeName == "title") {
             $title = $node->nodeValue;
         } else if ($nodeName == "guid") {
+            $guid = $node->nodeValue;
+        } else if ($nodeName == "link") {
             $link = $node->nodeValue;
         }
-        //$node->nodeType,
-        //$nodeValue = $node->nodeValue;
     }
-    $newArticle = isNewArticle($link, $dblink);
+    if ($guid == "NA") {
+        $guid = $link;
+    }
+    $newArticle = isNewArticle($guid, $dblink);
     if ($newArticle == 0) {
-        $articleId = newArticle($link, $title, $sourceId, $dblink);
+        $articleId = newArticle($guid, $title, $sourceId, $dblink);
         $filteredTitle = preg_replace ("/[^a-zA-Z0-9áéíóúñÑÁÉÍÓÚüÜ ]/", "", $title);
         $tokens = preg_split("/[\s,]+/", $filteredTitle);
         foreach ($tokens as $token) {

@@ -26,4 +26,6 @@ INSERT INTO `source` (`id`, `name`, `link`)
 VALUES
 	(1,'Clarin.com - HOME','http://clarin.feedsportal.com/c/33088/f/577681/index.rss'),
 	(2,'La Nacion - Ultimas Noticias','http://lanacion.com.ar.feedsportal.com/ultimasnoticias'),
-	(3,'Pagina 12 - Ultimas Noticias','http://www.pagina12.com.ar/diario/rss/principal.xml');
+	(3,'Pagina 12 - Principal','http://www.pagina12.com.ar/diario/rss/principal.xml'),
+	(4,'Pagina 12 - Ultimas Noticias','http://www.pagina12.com.ar/diario/rss/ultimas_noticias.xml'),
+	(5,'infobae - Hoy','http://www.infobae.com/rss/hoy.xml');
