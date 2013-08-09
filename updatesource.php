@@ -1,7 +1,10 @@
 <?php
 
 $ignoredTokens = array('para', 'mas', 'más', 'otra', 'quedó', 'quedo', 'porque', 
-    'pórque', 'pero', 'hasta', 'entre', 'están', 'está');
+    'pórque', 'pero', 'hasta', 'entre', 'están', 'está', 'sobre', 'tras', 
+    'toda', 'tiene', 'dice', 'desde', 'todo', 'esto', 'hablo', 'habló', 'como', 
+    'cómo', 'todos', 'tener', 'quien', 'quién', 'hace', 'asi', 'así', 'ahora',
+    'vuelve', 'volvió', 'volvio', 'tienen', 'tengo', 'segun', 'según');
 
 header("Content-Type: text/html;charset=utf-8");
 
