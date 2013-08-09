@@ -24,8 +24,8 @@ $keyword = "";
 $keywordList = "";
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $sourceId = $row['id_source'];
-    $currentLeyword = $row['value'];
-    if ($currentLeyword == $keyword){
+    $currentLeyword = strtolower($row['value']);
+    if ($currentLeyword == strtolower($keyword)){
     } else {
         echo $keyword;
         echo "<br><br><br>";
