@@ -17,6 +17,17 @@ include 'db.php';
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             return $row;
 	}
+	function getArticlesKeywords($articleIdFrom, $articleIdTo, $dblink) {
+            $query = "select keyword from keyword_article_xref where id_article_from=" . 
+                    $articleIdFrom . " and id_article_to=" . $articleIdTo;
+            
+            $result = $dblink->query($query);
+            $keywords = array();
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                array_push($keywords, $row["keyword"]);
+            }
+            return $keywords;
+	}
 
 
 
@@ -40,6 +51,12 @@ while($row=$result->fetch_assoc()) {
     $articleTo = getArticle($artToId, $dblink);
     echo "<br>";
     echo "$artToId<a href='".$articleTo['link']."'><img width='16px' height='16px' src='images/source-".$articleTo['id_source']."'/>" . $articleTo['title'] . "</a>";
+    echo "<br>";
+    $keywords = getArticlesKeywords($artFromId, $artToId, $dblink);
+    foreach ($keywords as $kw) {
+        echo " | " . $kw;
+    }
+    echo " |<br>";
 }
 
 $result->close();
